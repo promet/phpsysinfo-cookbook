@@ -1,0 +1,12 @@
+# phpsysinfo default Apache configuration
+
+<Directory /var/www/promet > 
+	Options FollowSymLinks
+	DirectoryIndex index.php
+	AllowOverride All
+        Order deny,Allow
+        AuthType Basic
+        AuthName "phpsysinfo access"
+        AuthUserFile /var/www/promet/.htpasswd
+        Require valid-user
+</Directory>
