@@ -4,15 +4,35 @@ This installs a few PHP scripts and a GitHub Project (https://github.com/rk4an/p
 
 # Requirements
 
-Install the Vagrant Berkshelf plugin
+Install Vagrant 1.2.x from the [Vagrant downloads page](http://downloads.vagrantup.com/)
 
+Install the Vagrant Berkshelf plugin:
+
+````
   $ vagrant plugin install vagrant-berkshelf
+````
 
 # Usage
 
 In your project Berksfile add:
 
-  $ cookbook "phpsysinfo", git: "https://github.com/gregpalmier/phpsysinfo-cookbook.git"
+````
+cookbook "phpsysinfo", git: "https://github.com/gregpalmier/phpsysinfo-cookbook.git"
+````
+
+In your project Vagrantfile add:
+
+````
+chef.run_list = [
+  "recipe[phpsysinfo-cookbook::default]"
+]
+````
+
+OR
+
+````
+chef.add_recipe "phpsysinfo::default"
+````
 
 # Recipes
 
