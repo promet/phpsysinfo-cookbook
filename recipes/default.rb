@@ -28,7 +28,7 @@ cookbook_file "#{node[:apache][:docroot_dir]}/phpinfo/phpinfo.php" do
 end
 
 # Clone the phpsysinfo repo from GitHub and put it under the
-# default apache vhost location (under an assumption here, yes)
+# default apache vhost location 
 git "#{node[:apache][:docroot_dir]}/phpinfo/phpsysinfo" do
    repository "https://github.com/rk4an/phpsysinfo.git"
    user "root"
@@ -46,13 +46,14 @@ end
 
 # Update the index.html file to include a link to the 
 # php info pages
-cookbook_file "#{node[:apache][:docroot_dir]}/index.html" do
+cookbook_file "#{node[:apache][:docroot_dir]}/phpinfo/index.html" do
   source "index.html"
   mode 0644
   owner "root"
   action :create
 end
 
+# a phpinfo specific to memcache
 cookbook_file "#{node[:apache][:docroot_dir]}/phpinfo/phpinfo_memcache.php" do
   source "phpinfo_memcache.php"
   mode 0644
@@ -60,6 +61,7 @@ cookbook_file "#{node[:apache][:docroot_dir]}/phpinfo/phpinfo_memcache.php" do
   action :create
 end
 
+# A look at PHP APC stats
 cookbook_file "#{node[:apache][:docroot_dir]}/phpinfo/phpinfo_apc.php" do
   source "phpinfo_apc.php"
   mode 0644
@@ -67,21 +69,11 @@ cookbook_file "#{node[:apache][:docroot_dir]}/phpinfo/phpinfo_apc.php" do
   action :create
 end
 
-#case node[:platform]
-#  when "ubuntu","debian"
-#    template "#{node[:apache][:dir]}/conf.d/phpsysinfo.conf" do
-#    source "phpsysinfo.conf.erb"
-#    owner "root"
-#    group 0
-#    mode 00644
-#    notifies :restart, "service[apache2]"
-#  end
-#  when "centos","redhat"
-#    template "#{node[:apache][:dir]}/conf.d/phpsysinfo.conf" do
-#    source "phpsysinfo.conf.erb"
-#    owner "root"
-#    group 0
-#    mode 00644
-#    notifies :restart, "service[httpd]"
-#  end
-#end
+#install apache alias directly to /etc/apache2/sites-enabled/
+template "/etc/apache2/sites-enabled/phpsysinfo.conf" do
+ source "phpsysinfo.conf.erb"
+ owner "root"
+ group 0
+ mode 00644
+ notifies :reload, "service[apache2]"
+end

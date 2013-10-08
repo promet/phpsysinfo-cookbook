@@ -1,2 +1,6 @@
 # phpsysinfo default Apache configuration
-
+Alias /phpinfo <%= node[:apache][:docroot_dir] %>/phpinfo
+<Directory <%= node[:apache][:docroot_dir] %>/phpinfo>
+    Order deny,allow
+    Allow from all
+</Directory>

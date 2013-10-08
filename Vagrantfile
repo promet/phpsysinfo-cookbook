@@ -88,7 +88,7 @@ Vagrant.configure("2") do |config|
   config.vm.provision :chef_solo do |chef|
     chef.json = {
 	:apache => {
-	  :default_site_enabled => "true" 
+#	  :default_site_enabled => "true" 
         }
     }
 
