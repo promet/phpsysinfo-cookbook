@@ -12,6 +12,12 @@ Install the Vagrant Berkshelf plugin:
   $ vagrant plugin install vagrant-berkshelf
 ````
 
+Install Berkshelf (http://berkshelf.com/):
+
+````
+  $ gem install berkshelf
+````
+
 # Usage
 
 In your project Berksfile add:
@@ -24,7 +30,7 @@ In your project Vagrantfile add:
 
 ````
 chef.run_list = [
-  "recipe[phpsysinfo-cookbook::default]"
+  "recipe[phpsysinfo::default]"
 ]
 ````
 
@@ -32,6 +38,12 @@ OR
 
 ````
 chef.add_recipe "phpsysinfo::default"
+````
+
+Once cloned, run:
+
+````
+$ berks install
 ````
 
 # Recipes
