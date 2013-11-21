@@ -11,16 +11,16 @@ Vagrant.configure("2") do |config|
   config.omnibus.chef_version = :latest
 
   # Every Vagrant virtual environment requires a box to build off of.
-  #config.vm.box = "squeeze64"
-  #config.vm.box_url = "https://s3.amazonaws.com/wa.milton.aws.bucket01/sqeeze.box"
+  config.vm.box = "squeeze64"
+  config.vm.box_url = "https://s3.amazonaws.com/wa.milton.aws.bucket01/sqeeze.box"
   #config.vm.box = "opscode_ubuntu-10.04_provisionerless.box"
   #config.vm.box_url = "https://opscode-vm-bento.s3.amazonaws.com/vagrant/opscode_ubuntu-10.04_provisionerless.box"
   #config.vm.box = "opscode_ubuntu-12.04_provisionerless.box"
   #config.vm.box_url = "https://opscode-vm-bento.s3.amazonaws.com/vagrant/opscode_ubuntu-12.04_provisionerless.box"
   #config.vm.box = "opscode_ubuntu-13.04_provisionerless.box"
   #config.vm.box_url = "https://opscode-vm-bento.s3.amazonaws.com/vagrant/opscode_ubuntu-13.04_provisionerless.box"
-  config.vm.box = "opscode_debian-7.1.0_provisionerless.box"
-  config.vm.box_url = "https://opscode-vm-bento.s3.amazonaws.com/vagrant/opscode_debian-7.1.0_provisionerless.box"
+  #config.vm.box = "opscode_debian-7.1.0_provisionerless.box"
+  #config.vm.box_url = "https://opscode-vm-bento.s3.amazonaws.com/vagrant/opscode_debian-7.1.0_provisionerless.box"
   #config.vm.box = "opscode_centos-6.4_provisionerless.box"
   #config.vm.box_url = "https://opscode-vm-bento.s3.amazonaws.com/vagrant/opscode_centos-6.4_provisionerless.box"
 

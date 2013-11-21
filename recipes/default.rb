@@ -7,6 +7,7 @@
 # All rights reserved - Redistribute
 #
 include_recipe 'git'
+include_recipe 'xml'
 include_recipe 'php'
 include_recipe 'php::module_apc'
 include_recipe 'apache2'
@@ -70,7 +71,7 @@ cookbook_file "#{node[:apache][:docroot_dir]}/phpinfo/phpinfo_apc.php" do
 end
 
 #install apache alias directly to /etc/apache2/sites-enabled/
-template "/etc/apache2/sites-enabled/phpsysinfo.conf" do
+template "#{node[:apache][:dir]}/sites-enabled/phpsysinfo.conf" do
  source "phpsysinfo.conf.erb"
  owner "root"
  group 0
